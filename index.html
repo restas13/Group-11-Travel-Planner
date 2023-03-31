@@ -5,8 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
 </head>
 <body>
+
+    <div class="row" id="user-input-section">
+        <div class="input-field col s4">
+            <select id="search-criteria">
+                <option value="1">Name</option>
+                <option value="2">Continent</option>
+                <option value="3">Language</option>
+            </select>
+            <label for="search-criteria" class="active">Select Search Criteria</label>
+        </div>
+
+        <div class="input-field col s4">
+            <input type="text" value="" id="country-input" class="autocomplete">
+            <label for="country-input" class="active">User Input</label>
+        </div>
+    </div>
     <script src="assets/script.js"></script>
 </body>
 </html>
