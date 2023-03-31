@@ -1,2 +1,42 @@
-/* test */
+h1 {
+    color: red;
+    text-align: center;
+}
 
+
+header {
+
+    background-color: black;
+    padding: 30px;
+}
+
+nav {
+
+    background-color: black;
+    text-align: end;
+}
+
+nav li {
+
+    color: red;
+    display: inline-block;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+
+
+.wel {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    margin: 20px;
+    
+}
+
+span {
+
+    background-color: #e53935;
+    display: flex;
+    width: 100%;
+}
