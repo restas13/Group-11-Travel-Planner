@@ -1,0 +1,32 @@
+
+ :root {
+    --offwhite: #F6F1F1;
+    --lightblue: #19A7CE;
+    --darkblue: #146C94;
+    --black: #000000;
+ }
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+body {
+
+  background-color: var(--offwhite);
+  /* background-image: url(/GroupProject1/Project1-Group-11/assets/london.jpg); */
+}
+
+h1 {
+  font-size: 80px;
+}
+
+#index-banner {
+  background-image: url(/GroupProject1/Project1-Group-11/assets/london.jpg);
+}
+
+#landing {
+  background-color: white;
+}
