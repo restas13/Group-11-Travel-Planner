@@ -16,12 +16,17 @@
 body {
 
   background-color: var(--offwhite);
+  /* background-image: url(/GroupProject1/Project1-Group-11/assets/london.jpg); */
 }
 
 h1 {
-  font-size: 100px;
+  font-size: 80px;
 }
 
-nav {
-  /* padding: 3%; */
+#index-banner {
+  background-image: url(/GroupProject1/Project1-Group-11/assets/london.jpg);
+}
+
+#landing {
+  background-color: white;
 }
