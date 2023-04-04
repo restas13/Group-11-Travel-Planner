@@ -24,9 +24,16 @@ h1 {
 }
 
 #index-banner {
-  background-image: url(/GroupProject1/Project1-Group-11/assets/london.jpg);
+  background-image: url(/GroupProject1/Project1-Group-11/london.jpg);
 }
 
 #landing {
   background-color: white;
+}
+
+#para {
+  background-color: white;
+  padding: 10px;
+  display: flexbox;
+  /* border-radius: 20%; */
 }
