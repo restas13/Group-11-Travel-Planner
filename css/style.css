@@ -1,10 +1,3 @@
-/* Custom Stylesheet */
-/**
- * Use this file to override Materialize files so you can update
- * the core Materialize files in the future
- *
- * Made By MaterializeCSS.com
- */
 
  :root {
     --offwhite: #F6F1F1;
@@ -23,4 +16,12 @@
 body {
 
   background-color: var(--offwhite);
+}
+
+h1 {
+  font-size: 100px;
+}
+
+nav {
+  /* padding: 3%; */
 }
