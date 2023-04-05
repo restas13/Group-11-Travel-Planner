@@ -6,6 +6,26 @@ var previousSearch = document.querySelector('#searchedCountries');
 var searched = [];
 var searchType = 'name';
 
+//Modal Start
+// Get the modal
+var modal = document.getElementById("myModal");
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+//Modal End
+
+
 if (localStorage.getItem('searchedCountries')) {
     searched = JSON.parse(localStorage.getItem('searchedCountries'));
 }
@@ -27,10 +47,18 @@ function countrySearch(event, country) {
         response.json()
         .then(function (data) {
             console.log(data);
+
+            //Error Modal for wrong input
+            if (response.status !== 200) {
+            modal.style.display = "block";
+            }
+
             var currency = Object.keys(data[0]['currencies'])[0];
             console.log(currency);
             console.log(data['0']["currencies"][currency])
             renderLocation(data[0].name.common, data[0]['currencies'][currency]['name'], data[0].continents, data[0].capital);
+
+            
 
 
             var isPresent = false;
@@ -76,6 +104,8 @@ function currencySearch(event) {
         response.json()
         .then(function (data) {
             console.log(data);
+
+
             var ul = document.createElement('ul')
             for (var i = 0; i < data.length; i++) {
                 var li = document.createElement('button');
@@ -163,3 +193,5 @@ search.addEventListener('click', function() {
 });
 
 renderSearched();
+
+
