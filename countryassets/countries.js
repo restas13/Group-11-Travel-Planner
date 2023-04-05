@@ -3,9 +3,12 @@ var searchArea = document.querySelector('#search-text');
 var resultContainer = document.querySelector('.container');
 var previousSearch = document.querySelector('#searchedCountries');
 
-var searched = JSON.parse(localStorage.getItem('searchedCountries'));
-var searchType = 'currency';
+var searched = [];
+var searchType = 'name';
 
+if (localStorage.getItem('searchedCountries')) {
+    searched = JSON.parse(localStorage.getItem('searchedCountries'));
+}
 
 function countrySearch(event, country) { 
     event.preventDefault();
@@ -34,18 +37,18 @@ function countrySearch(event, country) {
             if (searched.length > 0){
                 for (var i = 0; i < searched.length; i++) {
                     //console.log('working');
-                    if (country == searched[i]) {
+                    if (data[0].name.common == searched[i]) {
                         isPresent = true;
                     }
                 }
                 if (isPresent == false) {
-                    searched.push(country);
+                    searched.push(data[0].name.common);
                     console.log('added');
                     console.log(searched);
                 }
 
             }else {
-                searched.push(country);
+                searched.push(data[0].name.common);
                 console.log('added');
                 console.log(searched);
 
@@ -134,12 +137,17 @@ function renderSearched() {
     }
 
     for (var i = 0; i < searched.length; i++) {
-        var li = document.createElement('li');
+        var li = document.createElement('button');
 
         li.textContent = searched[i];
+        li.classList.add(searched[i]);
         ul.appendChild(li);
     }
 
+    ul.addEventListener('click', function(event) {
+        console.log(event.target.classList[0]);
+        countrySearch(event, event.target.classList[0]);
+    })
     ul.classList.add('prevCountries');
 
     previousSearch.appendChild(ul);
@@ -149,7 +157,7 @@ search.addEventListener('click', function() {
     if (searchType == 'currency') {
         currencySearch(event, searchArea.value);
     }else if (searchType == 'name') {
-        countrySearch(event);
+        countrySearch(event, searchArea.value);
     }
     
 });
