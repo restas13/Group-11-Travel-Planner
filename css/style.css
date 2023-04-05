@@ -23,6 +23,11 @@ h1 {
   font-size: 80px;
 }
 
+.input-field {
+  background-color: var(--offwhite);
+  align-items: center;
+}
+
 #index-banner {
   background-image: url(/GroupProject1/Project1-Group-11/assets/london.jpg);
 }

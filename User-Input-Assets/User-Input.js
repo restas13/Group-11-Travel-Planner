@@ -5,19 +5,36 @@ var countrylink = "";
     
 searchBtn.addEventListener('click', function(){
 
-    // var searchText = userText.value;
+    var searchText = userText.value;
+    fetchInfo(searchText);
 
-    // function fetchInfo(searchText) {
-    //     fetch(countrylink,
-    //         {
-    //             mode: 'no-cors',
-    //         })
-    //     .then(function(res) {
-    //         return res.json()
-    //     }).then(function(data) {
-    //         console.log(data);
-    //     })
-    // }
+    function fetchInfo(searchText) {
+        fetch(countrylink,
+            {
+                mode: 'no-cors',
+            }).then(function(data) {
+                console.log(data);
+        })
+    }
+})
+
+$(document).ready(function() {
+    var criteriaSelection = $('select').find(':selected').val();
+
+    if (criteriaSelection === 1) {
+        nameSearch();
+        return;
+    }
+    
+    if (criteriaSelection === 2) {
+        continentSearch();
+        return;
+    }
+    
+    if (criteriaSelection === 3) {
+        languageSearch();
+        return;
+    }
 
     var nameSearch = function() {
         countrylink.val = 'https://restcountries.com/v3.1/name/' + userText + '?fullText=true';
@@ -30,25 +47,6 @@ searchBtn.addEventListener('click', function(){
     var languageSearch = function() {
         countrylink.val = 'https://restcountries.com/v3.1/lang/' + userText;
     }
-
-    $(document).ready(function() {
-        var criteriaSelection = $('select').find(':selected').val();
-    
-        if (criteriaSelection === 1) {
-            nameSearch();
-            return;
-        }
-        
-        if (criteriaSelection === 2) {
-            continentSearch();
-            return;
-        }
-        
-        if (criteriaSelection === 3) {
-            languageSearch();
-            return;
-        }
-    })
-
-    fetchInfo();
 })
+
+    

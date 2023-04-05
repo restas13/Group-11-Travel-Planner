@@ -1,10 +1,10 @@
 var search = document.querySelector('#search-btn');
-var searchArea = document.querySelector('#search-text');
-var resultContainer = document.querySelector('.container');
-var previousSearch = document.querySelector('#searchedCountries');
+var searchArea = document.querySelector('#user-input-section');
+var resultContainer = document.querySelector('#result-container');
+var previousSearch = document.querySelector('#searched-countries');
 
 var searched = [];
-var searchType = 'name';
+
 
 if (localStorage.getItem('searchedCountries')) {
     searched = JSON.parse(localStorage.getItem('searchedCountries'));
@@ -153,13 +153,21 @@ function renderSearched() {
     previousSearch.appendChild(ul);
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    var searchType = document.querySelectorAll('select');
+    M.FormSelect.init(searchType);
+})
+
 search.addEventListener('click', function() {
-    if (searchType == 'currency') {
+    if (searchType == 3) {
         currencySearch(event, searchArea.value);
-    }else if (searchType == 'name') {
+    }else if (searchType == 0) {
         countrySearch(event, searchArea.value);
     }
-    
-});
+})
+            
+        
+            
+
 
 renderSearched();

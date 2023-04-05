@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Travel Planner</title>
 
-    
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="./style.css">
 
@@ -18,33 +19,48 @@
 <body>
     <!-- <div class="backgorund-color t#4a148c purple darken-4"></div> -->
 
-    <script src="assets/script.js"></script>
-
     <header>
-    <h1>Travel Planner</h1>
+        <h1>Travel Planner</h1>
+            <nav>
+                <ul>
+                    <li>Home</li>
+                    <li>Recent Searches</li>
+                </ul>
+            </nav>
+    </header>
 
-    <nav>
-        <ul>
-            <li>Home</li>
-            <li>Recent Searches</li>
+    <div class="card-panel #e53935 red darken-1">
+        <h3>Welcome to Travel Planner</h3>
+            <p>Select the Country search criteria and input your corresponding response. Our site will search for countries that fit the specific criteria and display them to users. Users can select one of the countries to learn more about traveling in the specific country.</p>
+    </div>
 
-        </ul>
-    </nav>
-</header>
+    <div class="row" id="user-input-section">
+        <div class="input-field col s3" id="search-criteria">
+            <select class="waves-effect waves-light btn">
+                <option value="1" selected>Name</option>
+                <option value="2">Continent</option>
+                <option value="3">Language</option>
+            </select>
+        </div>
 
-<div class="card-panel #e53935 red darken-1>
-<div class="wel">
-<h3>Welcome to Travel Planner</h3>
-<p>
-    Select the Country search criteria and input your corresponding response. Our site will search for countries that fit the specific criteria and display them to users. Users can select one of the countries to learn more about traveling in the specific country.
+        <div class="input-field col s6"></div>
+            <label for="search-criteria" class="active">Select Search Criteria</label>
+            <input type="text" value="" id="country-input" class="autocomplete">
+            <label for="country-input" class="active">User Input</label>
+        </div>
+        
+        <a class="waves-effect waves-light btn" id="search-btn">Search</a>
+    </div>
 
-</p>
-</div>
-</div>
+    <div class="row" id="searched-countries">
+        
+    </div>
 
-<span></span>
+    <div class="row" id="result-container">
 
-<!-- </div> -->
+    </div>
+
+<script src="countryassets/countries.js"></script>
 </body>
 </html>
 
