@@ -6,7 +6,7 @@ var previousSearch = document.querySelector('#searchedCountries');
 
 //creating the list of searchedcountries and setting the search type
 var searched = [];
-var searchType = 'language';
+var searchType = 'continent';
 
 //setting the searched list if there are any searched countries in the local storage
 if (localStorage.getItem('searchedCountries')) {
@@ -186,6 +186,61 @@ function languageSearch(event) {
     })
 }
 
+function regionSearch(event) {
+    event.preventDefault();
+
+    //deleting existing contents if there are existing elements within the container
+    if (resultContainer.childElementCount >= 1) {
+        var countryCont = document.querySelector('.countryinfo');
+
+        resultContainer.removeChild(countryCont);
+    }
+
+    //country language link
+    var countryLink = 'https://restcountries.com/v3.1/region/' + searchArea.value;
+
+    //fetching the information about all the countries that speak that language
+    fetch(countryLink)
+    .then(function (response) {
+        //logging the status of the response and processing the response
+        console.log(response.status);
+        response.json()
+        .then(function (data) {
+
+            //logging the data
+            console.log(data);
+
+            //creating a ul element that will contain the list of countries
+            var ul = document.createElement('ul')
+
+            //looping through the data and adding the names of the countries to the list as buttons
+            for (var i = 0; i < data.length; i++) {
+                var li = document.createElement('button');
+
+                //adding the tex and class for each button
+                li.textContent = data[i].name.common;
+                li.classList.add(li.textContent.replaceAll(' ', '-'));
+                console.log(li.textContent.replaceAll(' ', '-'));
+
+                //adding the button to the ul element
+                ul.appendChild(li);
+            }
+
+            //adding an event listener to the buttons so the user can click on the button and see results for searching for that country
+            ul.addEventListener('click', function(event) {
+                console.log(event.target.classList[0]);
+                countrySearch(event, event.target.classList[0].replaceAll('-', ' '));
+            })
+
+            //adding the countryinfo class
+            ul.classList.add('countryinfo')
+
+            //adding the ul element to the container in the html file
+            resultContainer.appendChild(ul);
+        })
+    })
+}
+
 //render the country search results
 function renderLocation(name, currency, continent, capital) {
     //container variable
@@ -239,7 +294,7 @@ function renderSearched() {
 
         //adding the text and class for each button
         li.textContent = searched[i];
-        li.classList.add(searched[i]);
+        li.classList.add(searched[i].replaceAll(' ', '-'));
 
         //adding the button to the ul container
         ul.appendChild(li);
@@ -248,7 +303,7 @@ function renderSearched() {
     //adding an event listener so the user can click the searched country and see their results
     ul.addEventListener('click', function(event) {
         console.log(event.target.classList[0]);
-        countrySearch(event, event.target.classList[0]);
+        countrySearch(event, event.target.classList[0].replaceAll('-', ' '));
     })
     ul.classList.add('prevCountries');
 
@@ -263,8 +318,10 @@ search.addEventListener('click', function() {
         currencySearch(event, searchArea.value);
     }else if (searchType == 'name') {
         countrySearch(event, searchArea.value);
-    }else if(searchType == 'language') {
+    }else if (searchType == 'language') {
         languageSearch(event, searchArea.value);
+    }else if (searchType == 'continent') {
+        regionSearch(event, searchArea.value);
     }
 });
 
