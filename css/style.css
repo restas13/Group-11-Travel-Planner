@@ -29,9 +29,27 @@ h1 {
 }
 
 #index-banner {
-  background-image: url(/GroupProject1/Project1-Group-11/assets/london.jpg);
+  background-image: url(/GroupProject1/Project1-Group-11/london.jpg);
 }
 
 #landing {
-  background-color: white;
+  background-color: var(--offwhite);
+}
+
+#para {
+  background-color: var(--offwhite);
+  padding: 10px;
+  display: flexbox;
+  /* border-radius: 20%; */
+}
+
+.container-results {
+  background-color: var(--offwhite);
+  text-align: center;
+  display: flex;
+}
+
+#silos {
+  width: 100px;
+  height: 100px;
 }
