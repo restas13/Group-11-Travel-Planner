@@ -19,6 +19,7 @@ if (localStorage.getItem('searchedCountries')) {
 function countrySearch(event, userInput) { 
     event.preventDefault();
 
+    console.log(userInput);
     //deleting existing contents if there are existing elements within the container
     if (resultContainer.childElementCount >= 1) {
         var countryCont = document.querySelector('.countryinfo');
@@ -27,7 +28,7 @@ function countrySearch(event, userInput) {
     }
 
     //country name link
-    var countryLink = 'https://restcountries.com/v3.1/name/' + userInput.value + '?fullText=true';
+    var countryLink = 'https://restcountries.com/v3.1/name/' + userInput + '?fullText=true';
 
     //fetching the information about the country
     fetch(countryLink)
@@ -89,7 +90,7 @@ function currencySearch(event, userInput) {
     }
 
     //country currency link
-    var countryLink = 'https://restcountries.com/v3.1/currency/' + userInput.value;
+    var countryLink = 'https://restcountries.com/v3.1/currency/' + userInput;
 
     //fetching the information about the countries that use the currency
     fetch(countryLink)
@@ -144,7 +145,7 @@ function languageSearch(event, userInput) {
     }
 
     //country language link
-    var countryLink = 'https://restcountries.com/v3.1/lang/' + userInput.value;
+    var countryLink = 'https://restcountries.com/v3.1/lang/' + userInput;
 
     //fetching the information about all the countries that speak that language
     fetch(countryLink)
@@ -199,7 +200,7 @@ function regionSearch(event, userInput) {
     }
 
     //country language link
-    var countryLink = 'https://restcountries.com/v3.1/region/' + userInput.value;
+    var countryLink = 'https://restcountries.com/v3.1/region/' + userInput;
 
     //fetching the information about all the countries that speak that language
     fetch(countryLink)
@@ -304,7 +305,7 @@ function renderSearched() {
 
     //adding an event listener so the user can click the searched country and see their results
     ul.addEventListener('click', function(event) {
-        console.log(event.target.classList[0]);
+        console.log(event.target.classList[0].replaceAll('-', ' '));
         countrySearch(event, event.target.classList[0].replaceAll('-', ' '));
     })
     ul.classList.add('prevCountries');
@@ -320,13 +321,13 @@ search.addEventListener('click', function() {
 
     //checks the search type to know what to search for from the api
     if (searchType == 3) { 
-        currencySearch(event, userInput);
+        currencySearch(event, userInput.value);
     }else if (searchType == 0) {
-        countrySearch(event, userInput);
+        countrySearch(event, userInput.value);
     }else if (searchType == 2) {
-        languageSearch(event, userInput);
+        languageSearch(event, userInput.value);
     }else if (searchType == 1) {
-        regionSearch(event, userInput);
+        regionSearch(event, userInput.value);
     }
 });
 
