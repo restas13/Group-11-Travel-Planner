@@ -1,12 +1,14 @@
 //Getting elements in the html file
 var search = document.querySelector('#search-btn');
-var searchArea = document.querySelector('#search-text');
-var resultContainer = document.querySelector('.container');
-var previousSearch = document.querySelector('#searchedCountries');
+var userInput = document.querySelector('#country-input');
+var resultContainer = document.querySelector('#result-container');
+var previousSearch = document.querySelector('#searched-countries');
 
 //creating the list of searchedcountries and setting the search type
 var searched = [];
-var searchType = 'continent';
+var searchType = 'name';
+
+// var userText = userInput.value;
 
 //setting the searched list if there are any searched countries in the local storage
 if (localStorage.getItem('searchedCountries')) {
@@ -14,7 +16,7 @@ if (localStorage.getItem('searchedCountries')) {
 }
 
 //Searching by country
-function countrySearch(event, country) { 
+function countrySearch(event, userInput) { 
     event.preventDefault();
 
     //deleting existing contents if there are existing elements within the container
@@ -25,13 +27,13 @@ function countrySearch(event, country) {
     }
 
     //country name link
-    var countryLink = 'https://restcountries.com/v3.1/name/' + country;
+    var countryLink = 'https://restcountries.com/v3.1/name/' + userInput.value + '?fullText=true';
 
     //fetching the information about the country
     fetch(countryLink)
     .then(function (response) {
         //logging the results and processing the data
-        console.log(country);
+        console.log(userInput);
         response.json()
         .then(function (data) {
             //creating a variable for currency that gets the name of the currency from the returned data
@@ -76,7 +78,7 @@ function countrySearch(event, country) {
     });
 }
 
-function currencySearch(event) {
+function currencySearch(event, userInput) {
     event.preventDefault();
 
     //deleting existing contents if there are existing elements within the container
@@ -87,7 +89,7 @@ function currencySearch(event) {
     }
 
     //country currency link
-    var countryLink = 'https://restcountries.com/v3.1/currency/' + searchArea.value;
+    var countryLink = 'https://restcountries.com/v3.1/currency/' + userInput.value;
 
     //fetching the information about the countries that use the currency
     fetch(countryLink)
@@ -131,7 +133,7 @@ function currencySearch(event) {
     })
 }
 
-function languageSearch(event) {
+function languageSearch(event, userInput) {
     event.preventDefault();
 
     //deleting existing contents if there are existing elements within the container
@@ -142,7 +144,7 @@ function languageSearch(event) {
     }
 
     //country language link
-    var countryLink = 'https://restcountries.com/v3.1/lang/' + searchArea.value;
+    var countryLink = 'https://restcountries.com/v3.1/lang/' + userInput.value;
 
     //fetching the information about all the countries that speak that language
     fetch(countryLink)
@@ -186,7 +188,7 @@ function languageSearch(event) {
     })
 }
 
-function regionSearch(event) {
+function regionSearch(event, userInput) {
     event.preventDefault();
 
     //deleting existing contents if there are existing elements within the container
@@ -197,7 +199,7 @@ function regionSearch(event) {
     }
 
     //country language link
-    var countryLink = 'https://restcountries.com/v3.1/region/' + searchArea.value;
+    var countryLink = 'https://restcountries.com/v3.1/region/' + userInput.value;
 
     //fetching the information about all the countries that speak that language
     fetch(countryLink)
@@ -313,15 +315,18 @@ function renderSearched() {
 
 search.addEventListener('click', function() {
 
+    var selectBox = document.getElementById('select-criteria');
+    var searchType = selectBox.value;
+
     //checks the search type to know what to search for from the api
-    if (searchType == 'currency') { 
-        currencySearch(event, searchArea.value);
-    }else if (searchType == 'name') {
-        countrySearch(event, searchArea.value);
-    }else if (searchType == 'language') {
-        languageSearch(event, searchArea.value);
-    }else if (searchType == 'continent') {
-        regionSearch(event, searchArea.value);
+    if (searchType == 3) { 
+        currencySearch(event, userInput);
+    }else if (searchType == 0) {
+        countrySearch(event, userInput);
+    }else if (searchType == 2) {
+        languageSearch(event, userInput);
+    }else if (searchType == 1) {
+        regionSearch(event, userInput);
     }
 });
 
