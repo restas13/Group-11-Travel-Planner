@@ -58,6 +58,13 @@ function countrySearch(event, userInput) {
     .then(function (response) {
         //logging the results and processing the data
         console.log(userInput);
+
+        if (response.status != 200) {
+
+            console.log(response.status);
+            modal.style.display = "block";
+            }
+
         response.json()
         .then(function (data) {
             //creating a variable for currency that gets the name of the currency from the returned data
