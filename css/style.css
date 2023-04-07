@@ -53,3 +53,7 @@ h1 {
   width: 100px;
   height: 100px;
 }
+
+#cityinput {
+  width: 500px;
+}
