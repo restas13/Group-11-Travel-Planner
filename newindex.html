@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link rel="stylesheet" type="text/css" href="./countryassets/modal.css">
 </head>
 <body>
   <nav class="indigo accent" role="navigation">
@@ -56,15 +57,14 @@
       <label for="country-input" class="active gray">User Input</label>
   </div>
   
-  <div class="row center">
-    <a href="#" id="search-btn" class="btn-large waves-effect waves-light blue darken-2">Search</a>
+  
 
       <div class="row center">
         <a href="/GroupProject1/Project1-Group-11/searchstyle.html" id="search-btn" class="btn-large waves-effect waves-light indigo accent">Search</a>
       </div>
-      <br><br>
+      
 
-    </div>
+
 
   </div>
   <br><br>
@@ -74,6 +74,37 @@
 <div class="row center" id="result-container">
 
 </div>
+<h3 class="row center">Searched Countries</h3>
+<div class="row center" id="searched-countries">
+
+</div>
+
+<section class=" center card-rounded col-7 ">
+  <header class="card-header text-center">
+    <h2 class="text-black">
+      Weather
+    </h2>
+    <section class="inputs">
+    <div class="input-field center col s4 pull-s4">
+      <input class="center" type="text" placeholder="Enter any city..." id="cityinput">
+    </div>
+      
+
+      <button class="btn btn-danger" id="fetch-button">
+          Submit
+      </button>
+      </div>
+      <div class="container" id="issues"></div>
+  </section>
+<section class="display">
+  <div class="wrapper">
+      <p id="cityoutput"></p>
+      <p id="description"></p>
+      <p id="temp"></p>
+      <p id="wind"></p>
+
+  </div>
+</section>
 
   <div class="container">
     <div class="section">
@@ -82,7 +113,7 @@
       <div class="row">
         <div class="col s12 m4">
           <div class="icon-block">
-            <h2 class="center indigo-text"><i class="material-icons"><img id="silos" src="/GroupProject1/Project1-Group-11/globe-silo.jpg"></i></h2>
+            <h2 class="center indigo-text"><i class="material-icons"><img id="silos" src="globe-silo.jpg"></i></h2>
             <h5 class="center">Learn about the world</h5>
 
             <p class="light">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
@@ -91,7 +122,7 @@
 
         <div class="col s12 m4">
           <div class="icon-block">
-            <h2 class="center indigo-text"><i class="material-icons"><img id="silos" src="/GroupProject1/Project1-Group-11/cloud-silo.png"></i></h2>
+            <h2 class="center indigo-text"><i class="material-icons"><img id="silos" src="cloud-silo.png"></i></h2>
             <h5 class="center">Reliable Weather Updates</h5>
 
             <p class="light">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
@@ -100,7 +131,7 @@
 
         <div class="col s12 m4">
           <div class="icon-block">
-            <h2 class="center indigo-text"><i class="material-icons"><img id="silos" src="/GroupProject1/Project1-Group-11/plane-silo.png"></i></h2>
+            <h2 class="center indigo-text"><i class="material-icons"><img id="silos" src="plane-silo.png"></i></h2>
             <h5 class="center">Perfect for Planning</h5>
 
             <p class="light">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
@@ -113,9 +144,7 @@
   </div>
 
 
-  <div class="row center" id="searched-countries">
-
-  </div>
+  
 
 
   <footer class="page-footer indigo">
@@ -155,10 +184,21 @@
     </div>
   </footer>
 
+  <div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content indigo-text">
+      <span class="close">&times;</span>
+      <h1>Error:</h1>
+      <p>Your search cannot be found, please double check your spelling.</p>
+    </div>
+  
+  </div>
+
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="countryassets/countries.js"></script>
+  <script src="assets/script.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
 
