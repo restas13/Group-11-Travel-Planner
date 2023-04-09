@@ -11,19 +11,28 @@ var searchType = 'name';
 
 //Modal Start
 // Get the modal
-var modal = document.getElementById("myModal");
+var namemodal = document.getElementById("nameModal");
+var langmodal = document.getElementById("langModal");
+var currmodal = document.getElementById("currModal");
+var contmodal = document.getElementById("contModal");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
 //(x), close the modal
 span.onclick = function() {
-  modal.style.display = "none";
+  namemodal.style.display = "none";
+  currmodal.style.display = "none";
+  contmodal.style.display = "none";
+  langmodal.style.display = "none";
 }
 
 //clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+  if (event.target == namemodal || event.target == langmodal || event.target == currmodal || event.target == contmodal) {
+    namemodal.style.display = "none";
+    langmodal.style.display = "none";
+    currmodal.style.display = "none";
+    contmodal.style.display = "none";
   }
 }
 //Modal End
@@ -60,9 +69,8 @@ function countrySearch(event, userInput) {
         console.log(userInput);
 
         if (response.status != 200) {
-
             console.log(response.status);
-            modal.style.display = "block";
+            namemodal.style.display = "block";
             }
 
         response.json()
@@ -109,6 +117,8 @@ function countrySearch(event, userInput) {
     });
 }
 
+
+
 function currencySearch(event, userInput) {
     event.preventDefault();
 
@@ -135,7 +145,7 @@ function currencySearch(event, userInput) {
 
              //Error Modal for wrong input
              if (response.status !== 200) {
-                modal.style.display = "block";
+                currmodal.style.display = "block";
                 }
 
             //creating a ul element that will contain the list of countries
@@ -147,8 +157,14 @@ function currencySearch(event, userInput) {
 
                 //adding the tex and class for each button
                 li.textContent = data[i].name.common;
-                li.classList.add(li.textContent.replaceAll(' ', '-'));
-                console.log(li.textContent.replaceAll(' ', '-'));
+
+                
+                li.classList.add('btn');
+                li.classList.add('btn-danger');
+                li.classList.add('indigo');
+                li.classList.add('searched-btn');
+                li.setAttribute('name', li.textContent);
+
 
                 //adding the button to the ul element
                 ul.appendChild(li);
@@ -157,7 +173,7 @@ function currencySearch(event, userInput) {
             //adding an event listener to the buttons so the user can click on the button and see results for searching for that country
             ul.addEventListener('click', function(event) {
                 console.log(event.target.classList[0]);
-                countrySearch(event, event.target.classList[0].replaceAll('-', ' '));
+                countrySearch(event, event.target.getAttribute('name'));
             })
 
             //adding the countryinfo class
@@ -195,8 +211,8 @@ function languageSearch(event, userInput) {
 
                  //Error Modal for wrong input
                  if (response.status !== 200) {
-                    modal.style.display = "block";
-                    }
+                    langmodal.style.display = "block";
+                }
 
             //creating a ul element that will contain the list of countries
             var ul = document.createElement('ul')
@@ -208,6 +224,11 @@ function languageSearch(event, userInput) {
                 //adding the tex and class for each button
                 li.textContent = data[i].name.common;
                 li.classList.add(li.textContent.replaceAll(' ', '-'));
+                li.classList.add('btn');
+                li.classList.add('btn-danger');
+                li.classList.add('indigo');
+                li.classList.add('searched-btn');
+                li.setAttribute('name', li.textContent);
                 console.log(li.textContent.replaceAll(' ', '-'));
 
                 //adding the button to the ul element
@@ -217,7 +238,7 @@ function languageSearch(event, userInput) {
             //adding an event listener to the buttons so the user can click on the button and see results for searching for that country
             ul.addEventListener('click', function(event) {
                 console.log(event.target.classList[0]);
-                countrySearch(event, event.target.classList[0].replaceAll('-', ' '));
+                countrySearch(event, event.target.getAttribute('name'));
             })
 
             //adding the countryinfo class
@@ -255,7 +276,7 @@ function regionSearch(event, userInput) {
 
                  //Error Modal for wrong input
                  if (response.status !== 200) {
-                    modal.style.display = "block";
+                    contmodal.style.display = "block";
                     }
 
             //creating a ul element that will contain the list of countries
@@ -268,6 +289,11 @@ function regionSearch(event, userInput) {
                 //adding the tex and class for each button
                 li.textContent = data[i].name.common;
                 li.classList.add(li.textContent.replaceAll(' ', '-'));
+                li.classList.add('btn');
+                li.classList.add('btn-danger');
+                li.classList.add('indigo');
+                li.classList.add('searched-btn');
+                li.setAttribute('name', li.textContent);
                 console.log(li.textContent.replaceAll(' ', '-'));
 
                 //adding the button to the ul element
@@ -277,7 +303,7 @@ function regionSearch(event, userInput) {
             //adding an event listener to the buttons so the user can click on the button and see results for searching for that country
             ul.addEventListener('click', function(event) {
                 console.log(event.target.classList[0]);
-                countrySearch(event, event.target.classList[0].replaceAll('-', ' '));
+                countrySearch(event, event.target.getAttribute('name'));
             })
 
             //adding the countryinfo class
@@ -295,10 +321,10 @@ function renderLocation(name, currency, continent, capital) {
     var ul = document.createElement('ul');
 
     //variables for the information
-    var nameText = 'Name: ' + name;
-    var currencyText = 'Currency: ' + currency;
-    var continentText = 'Continent: ' + continent;
-    var capitalText = 'Capital: ' + capital;
+    var nameText = 'NAME:   ' + name;
+    var currencyText = 'CURRENCY:    ' + currency;
+    var continentText = 'CONTINENT:  ' + continent;
+    var capitalText = 'CAPITAL:     ' + capital;
 
     //creating an array to contain the elements
     var cardContents = [nameText, currencyText, continentText, capitalText];
@@ -308,6 +334,7 @@ function renderLocation(name, currency, continent, capital) {
         var li = document.createElement('li');
 
         li.textContent = cardContents[i];
+        li.classList.add('resultText');
 
         ul.appendChild(li);
     }
@@ -343,6 +370,12 @@ function renderSearched() {
         //adding the text and class for each button
         li.textContent = searched[i];
         li.classList.add(searched[i].replaceAll(' ', '-'));
+        li.classList.add('btn');
+        li.classList.add('btn-danger');
+        li.classList.add('indigo');
+        li.classList.add('searched-btn');
+        li.setAttribute('name', li.textContent);
+        
 
         //adding the button to the ul container
         ul.appendChild(li);
@@ -351,7 +384,7 @@ function renderSearched() {
     //adding an event listener so the user can click the searched country and see their results
     ul.addEventListener('click', function(event) {
         console.log(event.target.classList[0].replaceAll('-', ' '));
-        countrySearch(event, event.target.classList[0].replaceAll('-', ' '));
+        countrySearch(event, event.target.getAttribute('name'));
     })
     ul.classList.add('prevCountries');
 

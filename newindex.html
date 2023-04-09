@@ -15,8 +15,9 @@
   <nav class="indigo accent" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="https://github.com/restas13/Project1-Group-11" class="brand-logo">Group 11 Travel Planner</a>
       <ul class="right hide-on-med-and-down-large waves-effect waves">
-        <li><a href="#">Home</a></li>
+        <li><a href="#">Search Countries</a></li>
         <li><a href="#">Recent Searches</a></li>
+        <li><a href="#">Check the weather</a></li>
       </ul>
 
       <ul id="nav-mobile" class="sidenav">
@@ -29,52 +30,53 @@
     <div class="container">
       <br><br>
       <div id="para">
-      <h1 class="header center indigo-text">Welcome to Travel Planner</h1>
-      <div class="row center">
-        <h5 class="header col s12 light indigo-text">Select the Country search criteria and input your corresponding response. Our site will search for countries that fit the specific criteria and display them to users. Users can select one of the countries to learn more about traveling in the specific country.</h5>
+        <h1 class="header center white-text" id="title-Text">Welcome to Travel Planner</h1>
+        <div class="row center">
+        <h5 class="header col s12 light white-text p-text">Select the Country search criteria and input your corresponding response. Our site will search for countries that fit the specific criteria and display them to users. Users can select one of the countries to learn more about traveling in the specific country.</h5>
       </div>
       </div>
-
-<!-- Search Drop Down Placeholder -->
-
-
-<!-- User Search input Placeholder-->
-
-<div class="row center" id="user-input-section">
-  <div class="input-field col s4" id="search-criteria">
-      <select class="waves-effect waves-light btn blue darken-2" id="select-criteria">
-          <option value="0" selected>Name</option>
-          <option value="1">Continent</option>
-          <option value="2">Language</option>
-          <option value="3">Currency</option>
-      </select>
-      <label for="search-criteria" class="active">Select Search Criteria</label>
-  </div>
+      <br>
+</br>
 
 
-  <div class="input-field center col s4" id="user-text"></div>
-      <input type="text" value="" id="country-input">
-      <label for="country-input" class="active gray">User Input</label>
-  </div>
-  
-  
-
-      <div class="row center">
-        <a href="/GroupProject1/Project1-Group-11/searchstyle.html" id="search-btn" class="btn-large waves-effect waves-light indigo accent">Search</a>
-      </div>
-      
-
+</div>
 
 
   </div>
   <br><br>
 
-</div>
+  <section class="center card-rounded col-7 ">
+    <div class="card-header text-center" id="user-input-section">
+      <div class="input-field col s12" id="search-criteria">
+        <select class="waves-effect waves-light btn blue darken-2" id="select-criteria">
+            <option value="0" selected>Name</option>
+            <option value="1">Continent</option>
+            <option value="2">Language</option>
+            <option value="3">Currency</option>
+        </select>
+        <label for="search-criteria" class="active indigo-text">Select Search Criteria</label>
+      </div>
+  
+  
+      <div class="input-field col s12 push-s6" id="user-text"></div>
+        <input type="text" value="" id="country-input">
+        <label for="country-input" class="active gray"></label>
+    </div>
+    
+    
+  
+      <div class="row center">
+        <a href="/GroupProject1/Project1-Group-11/searchstyle.html" id="search-btn" class="btn-large waves-effect waves-light indigo accent">Search</a>
+      </div>
+
+      <h3 class="row center">Results</h3>
+
+    </section>
 
 <div class="row center" id="result-container">
 
 </div>
-<h3 class="row center">Searched Countries</h3>
+<h3 class="row center" id="searched-cont">Searched Countries</h3>
 <div class="row center" id="searched-countries">
 
 </div>
@@ -90,7 +92,7 @@
     </div>
       
 
-      <button class="btn btn-danger" id="fetch-button">
+      <button class="btn btn-danger indigo" id="fetch-button">
           Submit
       </button>
       </div>
@@ -143,10 +145,6 @@
     <br><br>
   </div>
 
-
-  
-
-
   <footer class="page-footer indigo">
 
     <div class="container">
@@ -184,12 +182,42 @@
     </div>
   </footer>
 
-  <div id="myModal" class="modal">
+  <div id="nameModal" class="modal">
     <!-- Modal content -->
     <div class="modal-content indigo-text">
       <span class="close">&times;</span>
       <h1>Error:</h1>
-      <p>Your search cannot be found, please double check your spelling.</p>
+      <p>It appears the country you are looking for cannot be found, please varify your spelling and try again.</p>
+    </div>
+  
+  </div>
+
+  <div id="langModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content indigo-text">
+      <span class="close">&times;</span>
+      <h1>Error:</h1>
+      <p>It looks like the language you are looking for cannot be found, please varify your spelling and try again.</p>
+    </div>
+  
+  </div>
+
+  <div id="contModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content indigo-text">
+      <span class="close">&times;</span>
+      <h1>Error:</h1>
+      <p>Unfortunately, your search did not match any continents, please make sure you spelt the name of the continent correctly.</p>
+    </div>
+  
+  </div>
+
+  <div id="currModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content indigo-text">
+      <span class="close">&times;</span>
+      <h1>Error:</h1>
+      <p>Moneh no exist, u broke in all countries</p>
     </div>
   
   </div>
