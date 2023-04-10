@@ -6,6 +6,16 @@
     --black: #000000;
  }
 
+ .logo {
+  width: 60px;
+  margin-top: 3px;
+  
+ } 
+
+.brand-logo {
+  margin-left: 70px;
+}
+
 .icon-block {
   padding: 0 15px;
 }
@@ -29,7 +39,7 @@ h1 {
 }
 
 #index-banner {
-  background-image: url(/Project1-Group-11/london.jpg);
+  background-image: url(/Project1-Group-11/assets/images/london.jpg);
 }
 
 #landing {
@@ -71,9 +81,6 @@ h1 {
   
 }
 
-#title-Text{
-  
-}
 
 #user-input-section {
   margin-top: 100px;
