@@ -6,6 +6,16 @@
     --black: #000000;
  }
 
+ .logo {
+  width: 60px;
+  margin-top: 3px;
+  
+ } 
+
+.brand-logo {
+  margin-left: 70px;
+}
+
 .icon-block {
   padding: 0 15px;
 }
