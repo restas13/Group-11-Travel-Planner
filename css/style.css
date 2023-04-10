@@ -29,7 +29,7 @@ h1 {
 }
 
 #index-banner {
-  background-image: url(/Project1-Group-11/london.jpg);
+  background-image: url(/Project1-Group-11/assets/images/london.jpg);
 }
 
 #landing {
@@ -71,9 +71,6 @@ h1 {
   
 }
 
-#title-Text{
-  
-}
 
 #user-input-section {
   margin-top: 100px;
