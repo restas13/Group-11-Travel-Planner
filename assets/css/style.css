@@ -1,0 +1,111 @@
+
+ :root {
+    --offwhite: #F6F1F1;
+    --lightblue: #19A7CE;
+    --darkblue: #146C94;
+    --black: #000000;
+ }
+
+ .logo {
+  width: 60px;
+  margin-top: 3px;
+  
+ } 
+
+.brand-logo {
+  margin-left: 70px;
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+body {
+
+  background-color: var(--offwhite);
+  /* background-image: url(/GroupProject1/Project1-Group-11/assets/london.jpg); */
+}
+
+h1 {
+  font-size: 80px;
+}
+
+.input-field {
+  background-color: var(--offwhite);
+  align-items: center;
+}
+
+#index-banner {
+  background-image: url(/assets/images/london.jpg);
+}
+
+#landing {
+  background-color: var(--offwhite);
+}
+
+#para {
+  /*background-color: var(--offwhite);*/
+  padding: 10px;
+  display: flexbox;
+  background-color: rgba(7, 13, 43, 0.5);
+  /* border-radius: 20%; */
+}
+
+.container-results {
+  background-color: var(--offwhite);
+  text-align: center;
+  display: flex;
+}
+
+#silos {
+  width: 100px;
+  height: 100px;
+}
+
+#cityinput {
+  width: 500px;
+}
+
+.searched-btn {
+  margin: 3px;
+}
+
+.p-text {
+  font-size: 35px;
+  font-weight: bold;
+  -webkit-text-fill-color: aliceblue;
+  -webkit-text-stroke: 0px;
+  
+}
+
+
+#user-input-section {
+  margin-top: 100px;
+  align-content: center;
+}
+
+#search-criteria {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+  font-size: 30px;
+}
+
+#country-input {
+  right: 100px;
+  text-align: center;
+  width: 500px;
+}
+
+.resultText {
+  font-size: 25px;
+  padding: 2px;
+}
+
+#searched-cont{
+  margin-top: 100px;
+}
